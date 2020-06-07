@@ -41,6 +41,8 @@ for repo in g.get_user().get_repos():
 
     print(src.object.sha, oldrepo, "=>", newrepo)
 
+    # Create a new brach that points to the same commit as the existing branch.
     repo.create_git_ref('refs/heads/%s' % newrepo, sha=src.object.sha)
 
+    # Delete the old branch.
     src.delete()
