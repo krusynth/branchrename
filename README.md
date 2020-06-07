@@ -2,6 +2,8 @@
 
 This script goes through all repo that you own on GitHub that are not forks and renames any branches named `master` to a new name (defaults to `release`).
 
+**Note: this process will update all repos effected. As a result, these will appear at the beginning of your GitHub repositories list, and any configured hooks (CI, etc.) will be triggered.**
+
 Usage:
 
 1. [Create an auth token for GitHub](https://github.com/settings/tokens), with the `repo` privileges enabled.
