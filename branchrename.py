@@ -23,6 +23,10 @@ for repo in g.get_user().get_repos():
 
     print(repo.owner.login + "/" + repo.name, end=" ")
 
+    if repo.archived:
+      print('Repository is archived so branch name cannot be changed.')
+      continue
+
     # If we already have a branch named after the new branch, skip this repo.
     try:
       branch = repo.get_branch(branch=new_branch_name)
