@@ -21,25 +21,22 @@ for repo in g.get_user().get_repos():
     except GithubException:
       continue # We expect this if there's no master branch.
 
-    print(repo.name)
+    print(repo.owner.login + "/" + repo.name, end=" ")
 
     # If we already have a branch named after the new branch, skip this repo.
     try:
       branch = repo.get_branch(branch=newrepo)
       if branch:
-        print('Branch %s already exists, skipping' % newrepo)
+        print('Branch "%s" already exists, skipping' % newrepo)
         continue
 
     except GithubException:
       pass # We expect this.
 
     src = repo.get_git_ref('heads/%s' % oldrepo)
-    print(src.object.sha)
+
+    print(src.object.sha, oldrepo, "=>", newrepo)
 
     repo.create_git_ref('refs/heads/%s' % newrepo, sha=src.object.sha)
 
     src.delete()
-
-    print('Done')
-    print()
-
