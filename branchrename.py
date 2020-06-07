@@ -33,6 +33,10 @@ for repo in g.get_user().get_repos():
     except GithubException:
       pass # We expect this.
 
+    if branch.protected:
+      print('Branch "%s" is protected, skipping' % oldrepo)
+      continue
+
     src = repo.get_git_ref('heads/%s' % oldrepo)
 
     print(src.object.sha, oldrepo, "=>", newrepo)
