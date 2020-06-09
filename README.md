@@ -8,7 +8,7 @@ Usage:
 
 1. [Create an auth token for GitHub](https://github.com/settings/tokens), with the `repo` privileges enabled.
 
-1. Rename `settings.example.py` to `settings.py`. Enter the token and your user or organization. You can customize the new branch name.
+1. Rename `settings.example.py` to `settings.py` and paste your token. You can also customize the new branch name here.
 
 1. Install the dependencies: `pip3 install -r requirements.txt`
 
